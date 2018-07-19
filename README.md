@@ -11,6 +11,10 @@ And in this repository,I have added some CNNs to our models.What you need to do 
 >- ResNet_18/34/50/101/152
 >- DenseNet_161
 
+#0.Requirements
+keras >=2.1.5
+tensorflow >=1.8
+opencv-python >= 3.4.0.12
 # 1.Project structure
 ```tree
 ├─data             
