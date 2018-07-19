@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-# @Time    : 18-6-14 上午11:22
+# @Time    : 2018/7/19 17:51
 # @Author  : Spytensor
 # @File    : resnet.py
 # @Email   : zhuchaojie@buaa.edu.cn
-
 from __future__ import division
 
 import six
@@ -187,7 +186,7 @@ def _get_block(identifier):
 
 class ResnetBuilder(object):
     @staticmethod
-    def build(input_shape, num_outputs, block_fn, repetitions):
+    def build(config, block_fn, repetitions):
         """Builds a custom ResNet like architecture.
         Args:
             input_shape: The input shape in the form (nb_channels, nb_rows, nb_cols)
@@ -199,15 +198,9 @@ class ResnetBuilder(object):
         Returns:
             The keras `Model`.
         """
+        input_shape = (config.normal_size,config.normal_size,config.channels)
+        num_outputs = config.classes
         _handle_dim_ordering()
-        if len(input_shape) != 3:
-            raise Exception("Input shape should be a tuple (nb_channels, nb_rows, nb_cols)")
-
-        # Permute dimension order if necessary
-        if K.image_dim_ordering() == 'tf':
-            input_shape = (input_shape[1], input_shape[2], input_shape[0])
-
-        # Load function from str if needed.
         block_fn = _get_block(block_fn)
 
         input = Input(shape=input_shape)
@@ -228,28 +221,29 @@ class ResnetBuilder(object):
         pool2 = AveragePooling2D(pool_size=(block_shape[ROW_AXIS], block_shape[COL_AXIS]),
                                  strides=(1, 1))(block)
         flatten1 = Flatten()(pool2)
-        dense = Dense(units=num_outputs, 
-                      activation="sigmoid")(flatten1)
+        dense = Dense(units=num_outputs,
+                      activation="softmax")(flatten1)
 
         model = Model(inputs=input, outputs=dense)
+        model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
         return model
 
     @staticmethod
-    def build_resnet_18(input_shape, num_outputs):
-        return ResnetBuilder.build(input_shape, num_outputs, basic_block, [2, 2, 2, 2])
+    def build_resnet_18(params):
+        return ResnetBuilder.build(params, basic_block, [2, 2, 2, 2])
 
     @staticmethod
-    def build_resnet_34(input_shape, num_outputs):
-        return ResnetBuilder.build(input_shape, num_outputs, basic_block, [3, 4, 6, 3])
+    def build_resnet_34(params):
+        return ResnetBuilder.build(params, basic_block, [3, 4, 6, 3])
 
     @staticmethod
-    def build_resnet_50(input_shape, num_outputs):
-        return ResnetBuilder.build(input_shape, num_outputs, bottleneck, [3, 4, 6, 3])
+    def build_resnet_50(params):
+        return ResnetBuilder.build(params, bottleneck, [3, 4, 6, 3])
 
     @staticmethod
-    def build_resnet_101(input_shape, num_outputs):
-        return ResnetBuilder.build(input_shape, num_outputs, bottleneck, [3, 4, 23, 3])
+    def build_resnet_101(params):
+        return ResnetBuilder.build(params, bottleneck, [3, 4, 23, 3])
 
     @staticmethod
-    def build_resnet_152(input_shape, num_outputs):
-        return ResnetBuilder.build(input_shape, num_outputs, bottleneck, [3, 8, 36, 3])
+    def build_resnet_152(params):
+        return ResnetBuilder.build(params, bottleneck, [3, 8, 36, 3])
