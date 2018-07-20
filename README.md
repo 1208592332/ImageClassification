@@ -59,13 +59,13 @@ run:
 >python predict.py
 
 # 3. references
-[1] [Lécun Y, Bottou L, Bengio Y, et al. Gradient-based learning applied to document recognition[J]. Proceedings of the IEEE, 1998, 86(11):2278-2324.](http://www.cs.princeton.edu/courses/archive/spr08/cos598B/Lectures/LeCunEtAl.pdf)<br>
-[2] [Krizhevsky A, Sutskever I, Hinton G E. ImageNet classification with deep convolutional neural networks[C]// International Conference on Neural Information Processing Systems. Curran Associates Inc. 2012:1097-1105.](http://ml.informatik.uni-freiburg.de/former/_media/teaching/ws1314/dl/talk_simon_group2.pdf)<br>
-[3] [Simonyan K, Zisserman A. Very Deep Convolutional Networks for Large-Scale Image Recognition[J]. Computer Science, 2014.](https://arxiv.org/pdf/1409.1556.pdf)<br>
-[4] [Zeiler M D, Fergus R. Visualizing and Understanding Convolutional Networks[J]. 2014, 8689:818-833.](https://arxiv.org/pdf/1311.2901.pdf)<br>
-[5] [He K, Zhang X, Ren S, et al. Deep Residual Learning for Image Recognition[C]// IEEE Conference on Computer Vision and Pattern Recognition. IEEE Computer Society, 2016:770-778.](https://arxiv.org/pdf/1512.03385)<br>
-[6] [Szegedy C, Liu W, Jia Y, et al. Going deeper with convolutions[C]// IEEE Conference on Computer Vision and Pattern Recognition. IEEE, 2015:1-9.](https://arxiv.org/pdf/1409.4842.pdf)<br>
-[7] [Huang G, Liu Z, Laurens V D M, et al. Densely Connected Convolutional Networks[J]. 2016:2261-2269.](https://arxiv.org/pdf/1608.06993.pdf)<br>
-[8] [Introduce the cnns from LeNet to DensNet](https://www.cnblogs.com/skyfsm/p/8451834.html)<br>
-[9] [DenseNet-Keras](https://github.com/flyyufelix/DenseNet-Keras)<br>
-[10] [keras-resnet](https://github.com/raghakot/keras-resnet)<br>
+[Lécun Y, Bottou L, Bengio Y, et al. Gradient-based learning applied to document recognition[J]. Proceedings of the IEEE, 1998, 86(11):2278-2324.](http://www.cs.princeton.edu/courses/archive/spr08/cos598B/Lectures/LeCunEtAl.pdf)<br>
+[Krizhevsky A, Sutskever I, Hinton G E. ImageNet classification with deep convolutional neural networks[C]// International Conference on Neural Information Processing Systems. Curran Associates Inc. 2012:1097-1105.](http://ml.informatik.uni-freiburg.de/former/_media/teaching/ws1314/dl/talk_simon_group2.pdf)<br>
+ [Simonyan K, Zisserman A. Very Deep Convolutional Networks for Large-Scale Image Recognition[J]. Computer Science, 2014.](https://arxiv.org/pdf/1409.1556.pdf)<br>
+ [Zeiler M D, Fergus R. Visualizing and Understanding Convolutional Networks[J]. 2014, 8689:818-833.](https://arxiv.org/pdf/1311.2901.pdf)<br>
+ [He K, Zhang X, Ren S, et al. Deep Residual Learning for Image Recognition[C]// IEEE Conference on Computer Vision and Pattern Recognition. IEEE Computer Society, 2016:770-778.](https://arxiv.org/pdf/1512.03385)<br>
+ [Szegedy C, Liu W, Jia Y, et al. Going deeper with convolutions[C]// IEEE Conference on Computer Vision and Pattern Recognition. IEEE, 2015:1-9.](https://arxiv.org/pdf/1409.4842.pdf)<br>
+[Huang G, Liu Z, Laurens V D M, et al. Densely Connected Convolutional Networks[J]. 2016:2261-2269.](https://arxiv.org/pdf/1608.06993.pdf)<br>
+ [Introduce the cnns from LeNet to DensNet](https://www.cnblogs.com/skyfsm/p/8451834.html)<br>
+ [DenseNet-Keras](https://github.com/flyyufelix/DenseNet-Keras)<br>
+[keras-resnet](https://github.com/raghakot/keras-resnet)<br>
