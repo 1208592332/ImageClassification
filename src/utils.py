@@ -12,28 +12,29 @@ from models.VGGNet import VGG_16
 from models.ZFNet import ZF_Net
 from models.GooLeNet import GoogLeNet
 from models.DenseNet import DenseNet_161
+import tqdm
 import cv2
 import os
 import numpy as np
+import glob
 
 np.random.seed(42)
+
+def get_file(category_path):
+    return glob.glob(category_path + "/" + "*.jpg")
 
 def load_data(config):
     labels = []                                                         #存放标签信息
     images_data = []                                                    #存放图片信息
     print("loading dataset......")
-    data_path = config.	train_data_path                                  #也即是train文件夹
-    category_paths = os.listdir(data_path)                              #每个类别所在的文件夹，返回list格式
-    category_paths = list(map(lambda x:data_path+x,category_paths))     #组合成合法的路径，如../data/train/00000
-    np.random.shuffle(category_paths)
-    for category_path in category_paths:
-        images_files_list = os.listdir(category_path)                   #获取每个类别下的图像名称
-        print(category_path)
-        for image_file in images_files_list:
-            file_name = category_path + "/"+image_file                  #每张图片的路径，便于读取
+    data_path = config.train_data_path                                  #也即是train文件夹
+    category_paths = [list(map(lambda x: data_path + x, os.listdir(data_path))) for data_path in data_paths]
+    category_paths = category_paths[0]  
+    files = list(chain.from_iterable(list(map(get_file,category_paths))))
+    np.random.shuffle(files)
+    for file_name in tqdm.tqdm(files):
             label = int(category_path[-2:])                                  #提取类别信息
             labels.append(label)
-
             image = cv2.imread(file_name)                               #使用opencv读取图像
             image = cv2.resize(image,(config.normal_size,config.normal_size))
             image = img_to_array(image)                                 #将图像转换成array形式

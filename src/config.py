@@ -6,7 +6,7 @@
 
 class DefaultConfigs(object):
 	"""docstring for DefaultConfig"""
-	train_data_path = "../data/train/"     #训练数据所在路径
+	train_data_path = ["../data/train/"]     #训练数据所在路径
 	test_data_path = "../data/test/"       #要识别的图像存储路径
 	weights_path = "../log/"               #模型保存路径
 	normal_size = 64 				        #图像输入网络之前需要被resize的大小
